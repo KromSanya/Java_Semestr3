@@ -1,11 +1,13 @@
 package org.example;
 
+import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 public class DataTest {
     Data date = new Data(1, 5 ,2000);
 
-    @org.junit.Test
+    @Test
     public void getDay() {
         int result = date.GetDay();
         int correct = 5;

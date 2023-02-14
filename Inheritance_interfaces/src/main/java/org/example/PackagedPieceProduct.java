@@ -1,12 +1,12 @@
 package org.example;
 import java.util.Objects;
-public class PackagedPieceProduct extends PieceProduct {
+public class PackagedPieceProduct extends PackagedProduct {
     private final int count;
     private final PieceProduct product;
     private final ProductPack productPackaging;
 
     public PackagedPieceProduct(ProductPack productPackaging, int count, PieceProduct product) {
-        super(product.getName(), product.getDescription(), product.getWeight());
+        super(product.getName(), product.getDescription(), productPackaging);
         if (count < 0) throw new IllegalArgumentException("Negative count!");
         this.count = count;
         this.product = product;

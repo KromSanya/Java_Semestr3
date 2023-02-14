@@ -22,7 +22,7 @@ public class Data {
         years = y;
         for ( i = 0; i < arr.length; i++) {
             arr[i].toLowerCase();
-            if(arr[i] == m)
+            if(arr[i].equals(m))
             {
                 month = i+1;
             }
@@ -69,6 +69,7 @@ public class Data {
             else day = d;
         }
         month2 = arr[m-1];
+        month = m;
     }
 
     public void SetDay(int day)
