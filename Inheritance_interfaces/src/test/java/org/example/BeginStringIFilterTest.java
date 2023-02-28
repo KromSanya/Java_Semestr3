@@ -4,8 +4,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class EndStringFilterTest {
-    EndStringFilter filter = new EndStringFilter("раму");
+public class BeginStringIFilterTest {
+    BeginStringIFilter filter = new BeginStringIFilter("мама");
+
+
 
     @Test
     public void testApplyOK() {
@@ -14,7 +16,7 @@ public class EndStringFilterTest {
 
     @Test
     public void testApplyFalse() {
-        assertFalse(filter.apply("мама Мыла рамку"));
-        assertFalse(filter.apply("папа мыл что-то"));
+        assertFalse(filter.apply("Мама мыла раму"));
+        assertFalse(filter.apply("папа мыл раму"));
     }
 }

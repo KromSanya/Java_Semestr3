@@ -1,16 +1,16 @@
 package org.example;
 
-public class ContainsStringFilter implements Filter {
-
+public class BeginStringIFilter implements IFilter {
     private String pattern;
 
-    public ContainsStringFilter(String pattern)
+    public BeginStringIFilter(String pattern)
     {
         this.pattern = pattern;
     }
 
+
     @Override
     public boolean apply(String str) {
-        return str.contains(pattern);
+        return str.startsWith(pattern);
     }
 }

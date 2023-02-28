@@ -4,10 +4,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class BeginStringFilterTest {
-    BeginStringFilter filter = new BeginStringFilter("мама");
+public class ContainsStringIFilterTest {
 
-
+    ContainsStringIFilter filter = new ContainsStringIFilter("мыла");
 
     @Test
     public void testApplyOK() {
@@ -16,7 +15,7 @@ public class BeginStringFilterTest {
 
     @Test
     public void testApplyFalse() {
-        assertFalse(filter.apply("Мама мыла раму"));
+        assertFalse(filter.apply("мама Мыла раму"));
         assertFalse(filter.apply("папа мыл раму"));
     }
 }

@@ -1,10 +1,10 @@
 package org.example;
 
-public class EndStringFilter implements Filter{
+public class EndStringIFilter implements IFilter {
 
     private String pattern;
 
-    public EndStringFilter(String pattern)
+    public EndStringIFilter(String pattern)
     {
         this.pattern = pattern;
     }
