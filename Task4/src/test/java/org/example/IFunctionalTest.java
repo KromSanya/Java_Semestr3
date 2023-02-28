@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class IFunctionalTest {
+public class IFunctionalTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testError() {

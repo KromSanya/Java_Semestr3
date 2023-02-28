@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class SquareEquationTest {
+public class SquareEquationTest {
 
     @org.junit.jupiter.api.Test
     public void testSolve() {
