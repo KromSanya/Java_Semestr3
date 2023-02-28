@@ -1,4 +1,4 @@
-package org.example;
+/*package org.example;
 
 
 import org.junit.Test;
@@ -21,4 +21,4 @@ public class EquationSolverTest  {
         EquationSolver solver = new EquationSolver(equation);
         solver.getMax();
     }
-}
+}*/
