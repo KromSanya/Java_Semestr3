@@ -1,3 +1,4 @@
+/*
 package org.example;
 
 public class EquationSolver {
@@ -38,3 +39,4 @@ public class EquationSolver {
         this.arr = arr;
     }
 }
+*/
