@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="5" failures="0" name="org.example.IFuncIArgumentTest" time="0.008" errors="0" skipped="0">
+<testsuite tests="5" failures="0" name="org.example.IFuncIArgumentTest" time="0.01" errors="0" skipped="0">
   <properties>
     <property name="idea.version" value="2022.3"/>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
@@ -47,7 +47,7 @@
     <property name="java.class.path" value="C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2022.3\plugins\maven\lib\maven3\boot\plexus-classworlds-2.6.0.jar;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2022.3\plugins\maven\lib\maven3\boot\plexus-classworlds.license"/>
     <property name="java.vm.specification.version" value="19"/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="sun.java.command" value="org.codehaus.classworlds.Launcher -Didea.version=2022.3 deploy"/>
+    <property name="sun.java.command" value="org.codehaus.classworlds.Launcher -Didea.version=2022.3 test"/>
     <property name="java.home" value="C:\Users\kromv\.jdks\openjdk-19.0.1"/>
     <property name="user.language" value="ru"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
@@ -65,9 +65,9 @@
     <property name="sun.stdout.encoding" value="UTF-8"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="org.example.IFuncIArgumentTest" name="testError" time="0.004"/>
-  <testcase classname="org.example.IFuncIArgumentTest" name="testLinearFunction" time="0.002"/>
-  <testcase classname="org.example.IFuncIArgumentTest" name="testSinFunction" time="0.001"/>
+  <testcase classname="org.example.IFuncIArgumentTest" name="testError" time="0.005"/>
+  <testcase classname="org.example.IFuncIArgumentTest" name="testLinearFunction" time="0.004"/>
+  <testcase classname="org.example.IFuncIArgumentTest" name="testSinFunction" time="0"/>
   <testcase classname="org.example.IFuncIArgumentTest" name="testRationalFunction" time="0.001"/>
   <testcase classname="org.example.IFuncIArgumentTest" name="testExpFunction" time="0"/>
 </testsuite>
