@@ -19,9 +19,8 @@ public class PieceProduct extends Product {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof PieceProduct)) return false;
+        if (!(o instanceof PieceProduct that)) return false;
         if (!super.equals(o)) return false;
-        PieceProduct that = (PieceProduct) o;
         return Double.compare(that.getWeight(), getWeight()) == 0;
     }
 

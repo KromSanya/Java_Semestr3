@@ -2,7 +2,7 @@ package org.example;
 
 import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+
 
 public class WeightProductTest {
     @Test(expected = IllegalArgumentException.class)

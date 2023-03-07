@@ -1,7 +1,5 @@
 package org.example;
 
-import java.util.Arrays;
-
 public class ProductService {
     public static int countByFilter(ProductBatch batch, IFilter strFilter)
     {
