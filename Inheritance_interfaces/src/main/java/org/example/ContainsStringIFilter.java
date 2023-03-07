@@ -2,7 +2,7 @@ package org.example;
 
 public class ContainsStringIFilter implements IFilter {
 
-    private String pattern;
+    private final String pattern;
 
     public ContainsStringIFilter(String pattern)
     {

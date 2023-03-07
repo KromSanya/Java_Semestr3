@@ -15,12 +15,12 @@ public class ProductPackTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testConstructorNegativeWeight() {
-        ProductPack productPack = new ProductPack("Name", -90.0);
+        ProductPack productPack = new ProductPack("Name", -0.0);
     }
 
     @Test
     public void ToString() {
 
-        assertEquals("Товар Пакет (90.0)",String.format("Товар %s (%s)", product.getNamepack(), product.getWeight()));
+        assertEquals("Товар Пакет (90.0)", String.format("Товар %s (%s)", product.getNamepack(), product.getWeight()));
     }
 }

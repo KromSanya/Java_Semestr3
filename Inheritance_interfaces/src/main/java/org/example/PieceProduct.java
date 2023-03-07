@@ -7,7 +7,7 @@ public class PieceProduct extends Product {
 
     public PieceProduct(String name, String description, double weight) {
         super(name, description);
-        if (Double.compare(weight, 0.0) == -1) throw new IllegalArgumentException();
+        if (weight < 0.0) throw new IllegalArgumentException();
         this.weight = weight;
     }
 

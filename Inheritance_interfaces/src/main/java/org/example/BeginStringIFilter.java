@@ -1,7 +1,7 @@
 package org.example;
 
 public class BeginStringIFilter implements IFilter {
-    private String pattern;
+    private final String pattern;
 
     public BeginStringIFilter(String pattern)
     {

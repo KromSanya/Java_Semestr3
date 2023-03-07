@@ -2,7 +2,7 @@ package org.example;
 
 public class EndStringIFilter implements IFilter {
 
-    private String pattern;
+    private final String pattern;
 
     public EndStringIFilter(String pattern)
     {

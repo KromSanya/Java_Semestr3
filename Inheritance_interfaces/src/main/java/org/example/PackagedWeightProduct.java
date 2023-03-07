@@ -3,46 +3,49 @@ import java.util.Objects;
 public class PackagedWeightProduct extends PackagedProduct {
     private final double weight;
     private final WeightProduct product;
-    private final ProductPack productPackaging;
+
 
     public PackagedWeightProduct(ProductPack productPackaging, double weight, WeightProduct product) {
         super(product.getName(), product.getDescription(), productPackaging);
-        if (Double.compare(weight, 0.0) == -1) throw new IllegalArgumentException("Negative weight!");
+        if (weight < 0.0) throw new IllegalArgumentException("Negative weight!");
         this.weight = weight;
         this.product = product;
-        this.productPackaging = productPackaging;
     }
 
-    public double getWeight() {
-        return weight;
-    }
+
+
 
     public Product getProduct() {
         return product;
     }
 
     public String getNamepack() {
-        return productPackaging.getNamepack();
+        return getProductPack().getNamepack();
     }
+
+
+
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof PackagedWeightProduct)) return false;
-        PackagedWeightProduct that = (PackagedWeightProduct) o;
-        return Double.compare(that.getWeight(), getWeight()) == 0 && Objects.equals(productPackaging,
-                that.productPackaging) && Objects.equals(getProduct(), that.getProduct());
+        if (!(o instanceof PackagedWeightProduct that)) return false;
+        if (!super.equals(o)) return false;
+        return Double.compare(that.weight, weight) == 0 && Objects.equals(product, that.product) && Objects.equals(getProductPack(), that.getProductPack());
     }
+
+
+
 
     @Override
     public int hashCode() {
-        return Objects.hash(productPackaging, getWeight(), getProduct());
+        return Objects.hash(getProductPack(), getNetWeight(), getProduct());
     }
 
     @Override
     public String toString() {
         return String.format("Весовой товар '%s' с упаковкой '%s' (%fкг)",
-                product.getName(), productPackaging.getNamepack(), weight);
+                product.getName(), getProductPack().getNamepack(), weight);
     }
 
     public double getNetWeight() {
@@ -50,6 +53,6 @@ public class PackagedWeightProduct extends PackagedProduct {
     }
 
     public double getGrossWeight() {
-        return weight + productPackaging.getWeight();
+        return weight + getProductPack().getWeight();
     }
 }
