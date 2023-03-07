@@ -18,6 +18,7 @@ class ProductBatchTest {
     @Test
     void getWeight() {
         assertEquals(productBatch.getWeight(), 21);
+        assertEquals(productBatch.getWeight(), 21);
     }
 
     @Test

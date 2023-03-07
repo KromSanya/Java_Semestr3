@@ -8,8 +8,6 @@ public class ProductBatch {
     private String description;
     private PackagedProduct[] products;
 
-    private double grossweightsum;
-
 
 
     public ProductBatch(String description, PackagedProduct... products)
@@ -48,11 +46,12 @@ public class ProductBatch {
     }
     public double getWeight()
     {
+        double grossweight = 0;
         for(int i = 0 ; i < products.length; i++)
         {
-            grossweightsum+= products[i].getGrossWeight();
+            grossweight+= products[i].getGrossWeight();
         }
-        return grossweightsum;
+        return grossweight;
     }
 }
 

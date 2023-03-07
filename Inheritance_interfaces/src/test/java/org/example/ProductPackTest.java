@@ -15,7 +15,7 @@ public class ProductPackTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testConstructorNegativeWeight() {
-        ProductPack productPack = new ProductPack("Name", -0.0);
+        ProductPack productPack = new ProductPack("Name", -10.0);
     }
 
     @Test
