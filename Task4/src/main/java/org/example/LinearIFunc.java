@@ -1,6 +1,6 @@
 package org.example;
 
-public class LinearIFunc implements IFuncIArgument {
+public class LinearIFunc implements IFunc1Argument {
     double A, B;
     double right, left;
 

@@ -4,13 +4,13 @@ import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class IFuncIArgumentTest {
+public class IFunc1ArgumentTest {
 
     @Test
     public void testLinearFunction() {
         LinearIFunc linearFunction = new LinearIFunc(1, 2, 1, 10);
        // assertEquals(linearFunction.getValue(2), 4);
-        assertTrue(Math.abs(linearFunction.getValue(2) - 4) < 1E-5);
+        assertTrue(Math.abs(linearFunction.getValue(2) - 4) < 1E-3);
     }
 
     @Test

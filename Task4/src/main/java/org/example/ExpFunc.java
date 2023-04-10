@@ -1,6 +1,6 @@
 package org.example;
 
-public class ExpFunc implements IFuncIArgument {
+public class ExpFunc implements IFunc1Argument {
     double A, B;
     double right, left;
 

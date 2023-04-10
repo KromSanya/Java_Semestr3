@@ -1,6 +1,6 @@
 package org.example;
 
-public interface IFuncIArgument {
+public interface IFunc1Argument {
 
     double getValue(double x);
 

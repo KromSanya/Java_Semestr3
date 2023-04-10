@@ -1,6 +1,6 @@
 package org.example;
 
-public class IntegralFunctional<T extends IFuncIArgument> implements IFunctional<T> {
+public class IntegralFunctional<T extends IFunc1Argument> implements IFunctional<T> {
     private final double right, left;
 
     public IntegralFunctional(double left, double right) {
@@ -13,9 +13,9 @@ public class IntegralFunctional<T extends IFuncIArgument> implements IFunctional
         if (left < func.getLeft() || right > func.getRight()) throw new IllegalArgumentException();
         int n = 100;
         double result = 0.0;
-        double d = Math.abs(right - left) / n;
+        double fragment =  Math.abs(Math.abs(right) - Math.abs(left)) / n;
         for (int i = 0; i < n; i++) {
-            result += func.getValue(left + i * d + d / 2) * d;
+            result += func.getValue(left + i * fragment + fragment / 2) * fragment;
         }
         return result;
     }

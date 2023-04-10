@@ -1,6 +1,6 @@
 package org.example;
 
-public class RationalFunc implements IFuncIArgument {
+public class RationalFunc implements IFunc1Argument {
     double A, B, D, C;
     double right, left;
 

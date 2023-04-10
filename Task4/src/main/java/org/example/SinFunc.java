@@ -1,6 +1,6 @@
 package org.example;
 
-public class SinFunc implements IFuncIArgument {
+public class SinFunc implements IFunc1Argument {
     double A, B;
     double right, left;
 

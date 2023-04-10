@@ -12,6 +12,7 @@ public class EquationSolverTest  {
     public void testGetMax() {
         SquareEquation equation = new SquareEquation(3, -14, -5);
         EquationSolver solver = new EquationSolver(equation);
+
         assertEquals(5.0, solver.getMax());
     }
 
