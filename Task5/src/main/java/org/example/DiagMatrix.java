@@ -23,7 +23,7 @@ public class DiagMatrix extends Matrix implements IMatrix {
     }
     @Override
     public void setIJ(int i, int j, double element) {
-        if (i == j && i >= 0 && i < size) {
+        if ((i == j || element == 0) && i >= 0 && i < size && j >= 0 && j < size) {
             matrix[i * size + j] = element;
             actualDeterminant = false;
         } else {

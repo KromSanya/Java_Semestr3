@@ -19,7 +19,7 @@ public class UpTriangleMatrix extends Matrix {
     @Override
     public void setIJ(int x, int y, double elem)
     {
-        if(y>=x && x >= 0 && x < size && y < size)
+        if((y>=x || elem == 0) && x >= 0 && x < size && y < size)
         {
             matrix[x*size + y] = elem;
             actualDeterminant = false;

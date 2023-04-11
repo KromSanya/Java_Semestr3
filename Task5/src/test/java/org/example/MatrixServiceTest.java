@@ -16,7 +16,11 @@ public class MatrixServiceTest {
     Matrix[] array1;
 
     Matrix[] result1;
+
+    Matrix[] array2;
     Matrix m1 = new Matrix(3);
+
+    Matrix matrix;
 
     DiagMatrix dm1 = new DiagMatrix(4);
 
@@ -49,6 +53,9 @@ public class MatrixServiceTest {
 
         array1 = new Matrix[]{dm1, utm1, m1, m2};
         result1 = new Matrix[]{m2, m1, utm1, dm1};
+
+
+        array2 = new Matrix[]{dm1, utm1, m1, m2, matrix};
     }
 
     @Test
@@ -61,5 +68,10 @@ public class MatrixServiceTest {
     public void comparatorTest1() {
         arrangeMatrices(array1, matrixComparator);
         assertArrayEquals(result1, array1);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void comparatorTestFailed(){
+        arrangeMatrices(array2, matrixComparator);
     }
 }
