@@ -28,19 +28,21 @@ public class MatrixServiceTest {
     public void setup() {
         m1.matrix = new double[]
                 {2, 4, 6,
-                        3, 3, 3,
-                        4, 5, 9}; // -18
+                3, 3, 3,
+                4, 5, 9}; // -18
         dm1.matrix = new double[]
                 {2, 0, 0, 0,
-                        0, 4, 0, 0,
-                        0, 0, 6, 0,
-                        0, 0, 0, 8}; // 384
-        utm1.matrix = new double[]{1, 2, 0, 5}; // 5
+                0, 4, 0, 0,
+                0, 0, 6, 0,
+                0, 0, 0, 8}; // 384
+        utm1.matrix = new double[]
+                {1, 2,
+                0, 5}; // 5
         m2.matrix = new double[]
                 {1, 4, 8, 8,
-                        0, 2, 2, 8,
-                        1, 3, 3, 7,
-                        9, 8, 5, 2}; // -102
+                0, 2, 2, 8,
+                1, 3, 3, 7,
+                9, 8, 5, 2}; // -102
 
         array0 = new Matrix[]{dm1, utm1, m1};
         result0 = new Matrix[]{m1, utm1, dm1};

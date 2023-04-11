@@ -77,6 +77,7 @@ public class Matrix implements IMatrix {
                     }
                     determinant *= Math.pow(-1, index - i);
                 }
+
                 for (int j = i + 1; j < size; j++) {
                     coefficient = tmpMatrix[j * size + i] / tmpMatrix[i * size + i];
                     for (int k = 0; k < size; k++) {
@@ -91,6 +92,8 @@ public class Matrix implements IMatrix {
         }
         return determinant;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

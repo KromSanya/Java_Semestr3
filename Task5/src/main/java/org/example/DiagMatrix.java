@@ -31,7 +31,7 @@ public class DiagMatrix extends Matrix implements IMatrix {
         }
     }
 
-    public double getDeterminant() {
+    public double getMatrixDeterm() {
         if (!actualDeterminant) {
             actualDeterminant = true;
             determinant = 1;

@@ -27,7 +27,7 @@ public class UpTriangleMatrix extends Matrix {
             throw new IllegalArgumentException();
         }
     }
-    public double getDeterminant() {
+    public double getMatrixDeterm() {
         if (!actualDeterminant) {
             actualDeterminant = true;
             determinant = 1;

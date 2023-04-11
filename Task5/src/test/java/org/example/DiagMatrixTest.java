@@ -16,7 +16,7 @@ public class DiagMatrixTest {
 
     @Test
     public void getDeterminantTest() {
-        assertEquals(30, dm1.getDeterminant(), 0.001);
+        assertEquals(30, dm1.getMatrixDeterm(), 0.001);
     }
 
     @Test

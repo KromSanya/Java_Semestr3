@@ -22,7 +22,7 @@ public class UpTriangleMatrixTest {
 
     @Test
     public void getDeterminantTest0() {
-        assertEquals(27, utm1.getDeterminant(), 0.001);
+        assertEquals(27, utm1.getMatrixDeterm(), 0.001);
     }
 
     @Test
