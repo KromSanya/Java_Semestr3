@@ -8,6 +8,7 @@ public class UpTriangleMatrix extends Matrix {
     public UpTriangleMatrix(int size) {
         super(size);
     }
+    @Override
     public double getIJ(int x, int y){
         if(x >= 0 && x < size && y >= 0 && y < size) {
             return matrix[x * size + y];
@@ -15,6 +16,7 @@ public class UpTriangleMatrix extends Matrix {
             throw new IllegalArgumentException();
         }
     }
+    @Override
     public void setIJ(int x, int y, double elem)
     {
         if(y>=x && x >= 0 && x < size && y < size)

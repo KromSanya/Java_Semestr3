@@ -74,7 +74,7 @@ public class MatrixTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void setIJTestException() {
-        m1.setElementXY(0, 4, 999);
+        m1.setIJ(0, 4, 999);
     }
 
     @Test
@@ -124,7 +124,7 @@ public class MatrixTest {
         matrix.matrix = new double[]
                 {2, 4, 6, 3, 3, 3, 4, 5, 9};
         matrix.getMatrixDeterm(); // -18
-        matrix.setElementXY(0, 1, 5);
+        matrix.setIJ(0, 1, 5);
         assertEquals(-33, matrix.getMatrixDeterm(), 0.001);
     }
 
@@ -137,7 +137,7 @@ public class MatrixTest {
                         5, 9, 12, 14,
                         1, 2, 5, 7};
         matrix.getMatrixDeterm(); // 5
-        matrix.setElementXY(0, 1, 5);
+        matrix.setIJ(0, 1, 5);
         assertEquals(-26, matrix.getMatrixDeterm(), 0.001);
     }
 
@@ -151,7 +151,7 @@ public class MatrixTest {
         Matrix m4 = new Matrix(m1.getSize());
         for (int i = 0; i < m1.getSize(); i++) {
             for (int j = 0; j < m1.getSize(); j++) {
-                m4.setElementXY(i, j, m1.getElementXY(i, j));
+                m4.setIJ(i, j, m1.getIJ(i, j));
             }
         }
         assertEquals(m1, m4);

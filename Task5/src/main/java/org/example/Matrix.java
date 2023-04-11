@@ -25,7 +25,7 @@ public class Matrix implements IMatrix {
         this.size = size;
     }
     @Override
-    public double getElementXY(int x, int y) {
+    public double getIJ(int x, int y) {
         if(x >= 0 && x < size && y >= 0 && y < size) {
             return matrix[x * size + y];
         }else {
@@ -35,7 +35,7 @@ public class Matrix implements IMatrix {
     }
 
     @Override
-    public void setElementXY(int x, int y, double elem) {
+    public void setIJ(int x, int y, double elem) {
         if(x >= 0 && x < size && y >= 0 && y < size) {
             matrix[x*size + y] = elem;
             actualDeterminant = false;
@@ -62,13 +62,12 @@ public class Matrix implements IMatrix {
             double[] tmpMatrix = Arrays.copyOf(matrix, size * size);
             double coefficient = 0;
 
-            for (int i = 0; i < size - 1; i++) {
+            for (int i = 0; i < size; i++) {
                 int index = i;
                 while (index < size && tmpMatrix[index * size + i] == 0) {
                     index++;
                 }
                 if (index == size) {
-                    actualDeterminant = false;
                     determinant = 0;
                     return determinant;
                 }

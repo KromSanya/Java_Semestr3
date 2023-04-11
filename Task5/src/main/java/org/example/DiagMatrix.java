@@ -1,7 +1,6 @@
 package org.example;
 
 import java.util.Arrays;
-import java.util.Objects;
 
 public class DiagMatrix extends Matrix implements IMatrix {
     public DiagMatrix(int size) {
@@ -11,10 +10,10 @@ public class DiagMatrix extends Matrix implements IMatrix {
     public DiagMatrix(double... elements) {
         super(elements.length);
         for (int i = 0; i < size; i++) {
-            setElementXY(i, i, elements[i]);
+            this.setIJ(i, i, elements[i]);
         }
     }
-
+    @Override
     public double getIJ(int i, int j) {
         if (i >= 0 && i < size && j >= 0 && j < size) {
             return matrix[i * size + j];
@@ -22,7 +21,7 @@ public class DiagMatrix extends Matrix implements IMatrix {
             throw new IllegalArgumentException();
         }
     }
-
+    @Override
     public void setIJ(int i, int j, double element) {
         if (i == j && i >= 0 && i < size) {
             matrix[i * size + j] = element;

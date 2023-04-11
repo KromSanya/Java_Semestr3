@@ -31,7 +31,7 @@ public class UpTriangleMatrixTest {
         matrix.matrix = new double[]
                 {2, 4, 6, 0, 3, 3, 0, 0, 9};
         matrix.getMatrixDeterm(); // 54
-        matrix.setElementXY(1, 1, 5);
+        matrix.setIJ(1, 1, 5);
         assertEquals(90, matrix.getMatrixDeterm(), 0.001);
     }
 
@@ -44,7 +44,7 @@ public class UpTriangleMatrixTest {
                         0, 0, 6, 9,
                         0, 0, 0, 7};
         matrix.getMatrixDeterm(); // 252
-        matrix.setElementXY(1, 1, 5);
+        matrix.setIJ(1, 1, 5);
         assertEquals(420, matrix.getMatrixDeterm(), 0.001);
     }
 

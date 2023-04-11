@@ -1,6 +1,5 @@
 package org.example;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -24,7 +23,7 @@ public class DiagMatrixTest {
     public void actualDeterminantTest0() {
         Matrix matrix = new DiagMatrix(2, 4, 7);
         matrix.getMatrixDeterm(); // 42
-        matrix.setElementXY(0, 0, 5);
+        matrix.setIJ(0, 0, 5);
         assertEquals(140, matrix.getMatrixDeterm(), 0.001);
     }
 
@@ -32,7 +31,7 @@ public class DiagMatrixTest {
     public void actualDeterminantTest1() {
         Matrix matrix = new DiagMatrix(1, 3, 5, 7);
         matrix.getMatrixDeterm(); // 105
-        matrix.setElementXY(2, 2, 99);
+        matrix.setIJ(2, 2, 99);
         assertEquals(2079, matrix.getMatrixDeterm(), 0.001);
     }
 
