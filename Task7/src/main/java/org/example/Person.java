@@ -9,7 +9,6 @@ public class Person implements Serializable {
     private String name;
     private String lastName;
     private String patronymic;
-
     private Date date;
 
 
