@@ -1,7 +1,12 @@
 package org.example;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.regex.Pattern;
+
+import static org.example.ExportCSV.exportSCV;
 
 public class Main {
     public static void main(String[] args) {
@@ -53,7 +58,9 @@ public class Main {
         NameFilter nameFilter = new NameFilter();
         nameFilter.fileNameFilter("C:\\Users\\kromv\\IdeaProjects\\Task7\\src\\main\\java\\org\\example", pattern);
 
+        var house = new House("12345", "some_adr", new Person("name", "l_name", "p", new Date(1970, Calendar.FEBRUARY, 15)), new ArrayList<Flat>());
+        exportSCV(house);
+
 
     }
 }
-

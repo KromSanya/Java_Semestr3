@@ -1,6 +1,10 @@
 package org.example;
 
 
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
@@ -11,13 +15,21 @@ public class Person implements Serializable {
     private String patronymic;
     private Date date;
 
-
-    public Person(String name, String lastName, String patronymic, Date date) {
+    @JsonCreator
+    public Person(@JsonProperty(value = "name") String name, @JsonProperty(value = "lastName") String lastName, @JsonProperty(value = "patronymic") String patronymic, @JsonProperty(value = "date")Date date) {
         this.name = name;
         this.lastName = lastName;
         this.patronymic = patronymic;
         this.date = date;
     }
+
+
+
+
+
+
+
+
 
     public Date getDate() {
         return date;

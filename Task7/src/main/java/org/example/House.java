@@ -1,6 +1,13 @@
 package org.example;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.Serializable;
+import java.io.Writer;
 import java.util.List;
 import java.util.Objects;
 
@@ -10,12 +17,26 @@ public class House implements Serializable {
     private Person mainPerson;
     private List<Flat> flatList;
 
-    public House(String houseNumber, String address, Person mainPerson, List<Flat> flatList) {
-        this.houseNumber = houseNumber;
-        this.address = address;
-        this.mainPerson = mainPerson;
-        this.flatList = flatList;
+    @JsonCreator
+    public House(@JsonProperty(value = "houseNumber") String houseNumber, @JsonProperty(value = "address") String address, @JsonProperty(value = "mainPerson") Person mainPerson, @JsonProperty(value = "flatList") List<Flat> flatList) {
+        setHouseNumber(houseNumber);
+        setAddress(address);
+        setMainPerson(mainPerson);
+        setFlatList(flatList);
     }
+
+    public void exportCSV()
+    {
+        try {
+            Writer writer = new FileWriter("test.scv");
+            ObjectMapper mapper = new ObjectMapper();
+            mapper.writeValue(writer, flatList);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
 
     public String getHouseNumber() {
         return houseNumber;
