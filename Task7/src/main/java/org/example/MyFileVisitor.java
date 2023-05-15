@@ -29,7 +29,7 @@ public class MyFileVisitor extends SimpleFileVisitor<Path> {
         Matcher matcher = name.matcher(file.getFileName().toString());
         if(matcher.find())
         {
-            files.add(file.toAbsolutePath() + String.valueOf(file.getFileName()));
+            files.add(String.valueOf(file.toAbsolutePath()));
         }
         return FileVisitResult.CONTINUE;
     }

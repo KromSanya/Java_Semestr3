@@ -2,20 +2,23 @@ package org.example;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Serializable;
-import java.io.Writer;
+import java.io.*;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.IntStream;
 
 public class House implements Serializable {
+    private static final String CSV_SEPARATOR = ";";
     private String houseNumber;
     private String address;
     private Person mainPerson;
     private List<Flat> flatList;
+
+    public House()
+    {
+
+    }
 
     @JsonCreator
     public House(@JsonProperty(value = "houseNumber") String houseNumber, @JsonProperty(value = "address") String address, @JsonProperty(value = "mainPerson") Person mainPerson, @JsonProperty(value = "flatList") List<Flat> flatList) {
@@ -27,10 +30,28 @@ public class House implements Serializable {
 
     public void exportCSV()
     {
+        String filename = "house_" + houseNumber + ".csv";
         try {
-            Writer writer = new FileWriter("test.scv");
-            ObjectMapper mapper = new ObjectMapper();
-            mapper.writeValue(writer, flatList);
+            BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(filename)));
+            StringBuilder oneLine = new StringBuilder();
+            oneLine.append("Кадастровый номер: ").append(CSV_SEPARATOR).append(houseNumber).append(CSV_SEPARATOR).append("\r\n");
+            oneLine.append("Адрес: ").append(CSV_SEPARATOR).append(address).append("\r\n");
+            oneLine.append("Старший по дому: ").append(CSV_SEPARATOR).append(mainPerson.toString()).append(CSV_SEPARATOR).append("\r\n");
+            oneLine.append(CSV_SEPARATOR).append("Данные о квартирах").append(CSV_SEPARATOR).append("\r\n");
+            oneLine.append("Номер; Площадь; Владельцы").append("\r\n");
+            IntStream.range(0, flatList.size()).forEach(i -> {
+                oneLine.append(flatList.get(i).getNumber());
+                oneLine.append(CSV_SEPARATOR);
+                oneLine.append(flatList.get(i).getSquare());
+                oneLine.append(CSV_SEPARATOR);
+                oneLine.append(flatList.get(i).getPersonList());
+                oneLine.append("\r\n");
+            });
+            bw.write(oneLine.toString());
+            bw.newLine();
+
+            bw.flush();
+            bw.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -68,6 +89,25 @@ public class House implements Serializable {
 
     public void setFlatList(List<Flat> flatList) {
         this.flatList = flatList;
+    }
+
+
+
+    public void serialize(String filename) {
+        String fullname = mainPerson.getLastName() + " " + mainPerson.getFirstName() + " " + mainPerson.getPatronymic();
+        try (ObjectOutput out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(filename)))) {
+            out.writeObject(fullname);
+        } catch (IOException e) {
+            throw new RuntimeException("Ошибка сериализации");
+        }
+    }
+
+    public House deserializeHouse(String filename) {
+        try (ObjectInput in = new ObjectInputStream(new BufferedInputStream(new FileInputStream(filename)))) {
+            return (House) in.readObject();
+        } catch (IOException | ClassNotFoundException e) {
+            throw new RuntimeException("Ошибка десериализации");
+        }
     }
 
     @Override

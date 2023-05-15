@@ -3,27 +3,22 @@ package org.example;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.util.ArrayList;
 
 
 public class FileAccess {
-    public void getArr(long n) {
+    public static ArrayList<Integer> getArr(String path, int poz) {
 
-        int[] arr;
-        char temp;
+        ArrayList<Integer> arr = new ArrayList<>();
         RandomAccessFile rand;
             try {
-                rand = new RandomAccessFile("test2.txt", "r");
-                arr = new int[(int) rand.length()];
-                rand.seek(n);
-                for(long i = 0; i < rand.length()-n; i++)
+                rand = new RandomAccessFile(path, "r");
+                rand.seek(4 + poz * 4L);
+                while (rand.getFilePointer() < rand.length())
                 {
-                    temp = (char) rand.read();
-                    arr[(int) i] = temp - '0';
-                    System.out.println(arr[(int) i]);
+                    arr.add(rand.readInt());
                 }
-
-                //System.out.println(rand.readLine());
-
+                return arr;
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

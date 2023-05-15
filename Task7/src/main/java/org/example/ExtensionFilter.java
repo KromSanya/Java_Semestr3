@@ -16,7 +16,7 @@ public class ExtensionFilter implements FilenameFilter {
         return name.endsWith(extension);
     }
 
-    public  List<String> fileExtensionFilter(String dir){
+    public static List<String> fileExtensionFilter(String dir, String extension){
         File currentDir = new File(dir);
         if(!currentDir.exists())    throw new IllegalArgumentException();
         List<String> files = List.of(Objects.requireNonNull(currentDir.list(new ExtensionFilter(extension))));

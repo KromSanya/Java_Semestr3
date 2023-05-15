@@ -22,7 +22,7 @@ public class ExportCSV {
                 oneLine.append(CSV_SEPARATOR);
                 oneLine.append(house.getFlatList().get(i).getSquare());
                 oneLine.append(CSV_SEPARATOR);
-                oneLine.append(house.getFlatList().get(i).getPersonList());
+                oneLine.append(house.getFlatList().get(i).getPersonList().toString());
                 oneLine.append("\r\n");
             });
             bw.write(oneLine.toString());

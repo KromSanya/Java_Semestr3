@@ -1,6 +1,12 @@
 package org.example;
 
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.io.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -47,20 +53,30 @@ public class Main {
             throw new RuntimeException(e);
         }*/
 
-        FileAccess fileAccess = new FileAccess();
-        fileAccess.getArr(4);
-
         ExtensionFilter filter = new ExtensionFilter(".java");
-        filter.fileExtensionFilter("C:\\Users\\kromv\\IdeaProjects\\Task7\\src\\main\\java\\org\\example");
+        //filter.fileExtensionFilter("C:\\Users\\kromv\\IdeaProjects\\Task7\\src\\main\\java\\org\\example");
 
 
         Pattern pattern = Pattern.compile("А.+?а");
         NameFilter nameFilter = new NameFilter();
         nameFilter.fileNameFilter("C:\\Users\\kromv\\IdeaProjects\\Task7\\src\\main\\java\\org\\example", pattern);
 
-        var house = new House("12345", "some_adr", new Person("name", "l_name", "p", new Date(1970, Calendar.FEBRUARY, 15)), new ArrayList<Flat>());
-        exportSCV(house);
+//        var house = new House("12345", "some_adr", new Person("name", "l_name", "p", new Date(1971, Calendar.FEBRUARY, 15)), new ArrayList<Flat>());
+//        exportSCV(house);
+        LocalDate localDate = LocalDate.of(1980, 10, 23);
+        Person person = new Person("Jon", "Snow", "Targ", localDate);
 
 
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            String json = mapper.writeValueAsString(person);
+
+            person = mapper.readValue(json, Person.class);
+            System.out.println(person.toString());
+
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
+
