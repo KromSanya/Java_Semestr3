@@ -3,7 +3,9 @@ package org.example;
 import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 
 import java.io.IOException;
@@ -25,19 +27,11 @@ public class FlatDeserializer extends StdDeserializer<Flat> {
         number = jp.getIntValue();
         jp.nextValue();
         square = jp.getDoubleValue();
-        while (jp.nextToken() != JsonToken.END_OBJECT) {
-            String fullname = "";
-            String[] Fullname;
-            LocalDate localDate;
+        jp.nextValue();
+        while (jp.nextValue() != JsonToken.END_ARRAY) {
+            ObjectMapper objectMapper = new ObjectMapper();
+            personList.add( objectMapper.readValue(jp, new TypeReference<>(){}));
             jp.nextValue();
-            fullname = jp.getValueAsString();
-            Fullname = fullname.split(" ");
-            String lastName = Fullname[0];
-            String firstName = Fullname[1];
-            String patronymic = Fullname[2];
-            jp.nextValue();
-            localDate = LocalDate.parse(jp.getValueAsString());
-            personList.add(new Person(firstName, lastName, patronymic, localDate));
         }
 
         return new Flat(number, square, personList);

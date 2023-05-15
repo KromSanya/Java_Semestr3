@@ -31,6 +31,6 @@ public class PersonDeserializer extends StdDeserializer<Person> {
         String patronymic = Fullname[2];
         jp.nextValue();
         localDate = LocalDate.parse(jp.getValueAsString());
-        return new Person(lastName, firstName, patronymic, localDate);
+        return new Person(firstName, lastName, patronymic, localDate);
     }
 }

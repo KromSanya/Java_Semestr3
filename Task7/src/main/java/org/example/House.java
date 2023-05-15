@@ -2,12 +2,16 @@ package org.example;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import java.io.*;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.IntStream;
 
+@JsonSerialize(using = HouseSerializer.class)
+@JsonDeserialize(using = HouseDeserializer.class)
 public class House implements Serializable {
     private static final String CSV_SEPARATOR = ";";
     private String houseNumber;

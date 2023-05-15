@@ -19,12 +19,14 @@ public class FlatSerializer extends StdSerializer<Flat> {
             jGen.writeStartObject();
             jGen.writeNumberField("Number", flat.getNumber());
             jGen.writeNumberField("Square", flat.getSquare());
-            //jGen.writeFieldName("persons");
+            jGen.writeFieldName("persons");
+            jGen.writeStartArray();
             for (Person person: flat.getPersonList()) {
-                jGen.writeStringField("FullName", person.getLastName() + " " + person.getFirstName() + " " + person.getPatronymic());
-                jGen.writeStringField("Дата рождения", person.getDate().toString());
+                ObjectMapper mapper = new ObjectMapper();
+               // mapper.writeValueAsString(flat.getPersonList());
+                jGen.writeRawValue(mapper.writeValueAsString(person));
             }
-           // jGen.writeStringField("Дата рождения", person.getDate().toString());
+            jGen.writeEndArray();
             jGen.writeEndObject();
         }
 

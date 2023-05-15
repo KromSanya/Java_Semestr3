@@ -13,6 +13,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.regex.Pattern;
 
 import static org.example.ExportCSV.exportSCV;
@@ -63,26 +64,29 @@ public class Main {
         Pattern pattern = Pattern.compile("А.+?а");
         NameFilter nameFilter = new NameFilter();
         nameFilter.fileNameFilter("C:\\Users\\kromv\\IdeaProjects\\Task7\\src\\main\\java\\org\\example", pattern);
-
-//        var house = new House("12345", "some_adr", new Person("name", "l_name", "p", new Date(1971, Calendar.FEBRUARY, 15)), new ArrayList<Flat>());
-//        exportSCV(house);
         LocalDate localDate = LocalDate.of(1980, 10, 23);
+
+      //  exportSCV(house);
+
         Person person = new Person("Jon", "Snow", "Targ", localDate);
         Person person1 = new Person("Nate", "Higger", "Targ", localDate);
         Person person2 = new Person("Nill", "Higger", "Targ", localDate);
         Person person3 = new Person("Nuck", "Figger", "Targ", localDate);
         ArrayList<Person> persons = new ArrayList<>();
-        persons.add(person);
+       // persons.add(person);
         persons.add(person1);
         persons.add(person2);
         persons.add(person3);
         Flat flat  = new Flat(20, 50.0, persons);
-        System.out.println(flat.toString());
+        List<Flat> flats = new ArrayList<>();
+        flats.add(flat);
+        House house = new House("12345", "some_adr", person, flats);
+        //System.out.println(flat.toString());
         try {
             ObjectMapper mapper = new ObjectMapper();
-            String json = mapper.writeValueAsString(flat);
+            String json = mapper.writeValueAsString(house);
 
-            flat = mapper.readValue(json, Flat.class);
+            house = mapper.readValue(json, House.class);
             System.out.println(json);
 
         } catch (JsonProcessingException e) {
