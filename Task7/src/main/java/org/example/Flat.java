@@ -1,15 +1,24 @@
 package org.example;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
+@JsonSerialize(using = FlatSerializer.class)
+@JsonDeserialize(using = FlatDeserializer.class)
 public class Flat implements Serializable {
     private int number;
     private double square;
     private List<Person> personList;
+
+    public Flat()
+    {
+
+    }
 
     public Flat(@JsonProperty(value = "number") int number, @JsonProperty(value = "square") double square, @JsonProperty(value = "name") List<Person> personList) {
         setNumber(number);

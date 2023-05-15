@@ -23,15 +23,13 @@ public class PersonDeserializer extends StdDeserializer<Person> {
         String fullname = "";
         String[] Fullname;
         LocalDate localDate;
-        jp.nextToken();
-        jp.nextToken();
+        jp.nextValue();
         fullname = jp.getValueAsString();
         Fullname = fullname.split(" ");
         String lastName = Fullname[0];
         String firstName = Fullname[1];
         String patronymic = Fullname[2];
-        jp.nextToken();
-        jp.nextToken();
+        jp.nextValue();
         localDate = LocalDate.parse(jp.getValueAsString());
         return new Person(lastName, firstName, patronymic, localDate);
     }

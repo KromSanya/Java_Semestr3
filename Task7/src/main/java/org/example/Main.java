@@ -1,9 +1,12 @@
 package org.example;
 
 import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializerProvider;
+import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 
 import java.io.*;
 import java.time.LocalDate;
@@ -65,14 +68,22 @@ public class Main {
 //        exportSCV(house);
         LocalDate localDate = LocalDate.of(1980, 10, 23);
         Person person = new Person("Jon", "Snow", "Targ", localDate);
-
-
+        Person person1 = new Person("Nate", "Higger", "Targ", localDate);
+        Person person2 = new Person("Nill", "Higger", "Targ", localDate);
+        Person person3 = new Person("Nuck", "Figger", "Targ", localDate);
+        ArrayList<Person> persons = new ArrayList<>();
+        persons.add(person);
+        persons.add(person1);
+        persons.add(person2);
+        persons.add(person3);
+        Flat flat  = new Flat(20, 50.0, persons);
+        System.out.println(flat.toString());
         try {
             ObjectMapper mapper = new ObjectMapper();
-            String json = mapper.writeValueAsString(person);
+            String json = mapper.writeValueAsString(flat);
 
-            person = mapper.readValue(json, Person.class);
-            System.out.println(person.toString());
+            flat = mapper.readValue(json, Flat.class);
+            System.out.println(json);
 
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);

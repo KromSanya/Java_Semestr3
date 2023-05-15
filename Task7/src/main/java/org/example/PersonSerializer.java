@@ -23,7 +23,7 @@ public class PersonSerializer extends StdSerializer<Person> {
                     SerializerProvider serializerProvider) throws IOException
     {
         jGen.writeStartObject();
-        jGen.writeStringField("FullName", person.getLastName() + " " + person.getLastName() + " " + person.getPatronymic());
+        jGen.writeStringField("FullName", person.getLastName() + " " + person.getFirstName() + " " + person.getPatronymic());
         jGen.writeStringField("Дата рождения", person.getDate().toString());
         jGen.writeEndObject();
     }
