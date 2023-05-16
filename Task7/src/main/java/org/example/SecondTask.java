@@ -8,7 +8,7 @@ import java.util.List;
 
 public class SecondTask {
     public static void writeCharsInFileWithSpaces(List<Character> characterList, String filename) {
-        try (var writer = new FileWriter(filename)) {
+        try (FileWriter writer = new FileWriter(filename)) {
             for (Character c : characterList) writer.write(c);
         } catch (IOException e) {
             throw new RuntimeException("Ошибка записи в файл");
@@ -16,8 +16,8 @@ public class SecondTask {
     }
 
     public static ArrayList<Character> readCharsFromFile(String filename) {
-        try (var reader = new FileReader(filename)) {
-            var listChar = new ArrayList<Character>();
+        try (FileReader reader = new FileReader(filename)) {
+            ArrayList<Character> listChar = new ArrayList<>();
             while (reader.ready()) listChar.add((char) reader.read());
 
             return listChar;

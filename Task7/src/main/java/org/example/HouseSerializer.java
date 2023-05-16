@@ -26,7 +26,6 @@ public class HouseSerializer extends StdSerializer<House> {
         for(Flat flat : house.getFlatList())
         {
             ObjectMapper mapper = new ObjectMapper();
-            // mapper.writeValueAsString(flat.getPersonList());
             jGen.writeRawValue(mapper.writeValueAsString(flat));
         }
         jGen.writeEndArray();

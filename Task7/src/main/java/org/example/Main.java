@@ -65,9 +65,6 @@ public class Main {
         NameFilter nameFilter = new NameFilter();
         nameFilter.fileNameFilter("C:\\Users\\kromv\\IdeaProjects\\Task7\\src\\main\\java\\org\\example", pattern);
         LocalDate localDate = LocalDate.of(1980, 10, 23);
-
-      //  exportSCV(house);
-
         Person person = new Person("Jon", "Snow", "Targ", localDate);
         Person person1 = new Person("Nate", "Higger", "Targ", localDate);
         Person person2 = new Person("Nill", "Higger", "Targ", localDate);

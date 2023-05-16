@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.IntStream;
@@ -36,7 +37,8 @@ public class House implements Serializable {
     {
         String filename = "house_" + houseNumber + ".csv";
         try {
-            BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(filename)));
+            //Writer writer = new FileWriter(filename, StandardCharSets.UTF_8);
+            BufferedWriter bw = new BufferedWriter(new FileWriter(filename, StandardCharsets.UTF_8));
             StringBuilder oneLine = new StringBuilder();
             oneLine.append("Кадастровый номер: ").append(CSV_SEPARATOR).append(houseNumber).append(CSV_SEPARATOR).append("\r\n");
             oneLine.append("Адрес: ").append(CSV_SEPARATOR).append(address).append("\r\n");

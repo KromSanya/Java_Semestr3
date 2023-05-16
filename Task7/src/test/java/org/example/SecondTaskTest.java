@@ -11,7 +11,7 @@ class SecondTaskTest {
     @Test
     void writeAndReadCharsInFileWithSpaces() {
         var filename = "input.txt";
-        var data = new ArrayList<Character>() {{
+        ArrayList<Character> data = new ArrayList<>() {{
             add('a');
             add('b');
             add('c');

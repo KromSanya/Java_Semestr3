@@ -11,8 +11,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class FirstTaskTest {
     @Test
     void writeAndReadIntListToBinFile() {
-        var filename = "integers.bin";
-        var data = new ArrayList<Integer>() {{
+        String filename = "integers.bin";
+        ArrayList<Integer> data = new ArrayList<>() {{
             add(1);
             add(2);
             add(3);

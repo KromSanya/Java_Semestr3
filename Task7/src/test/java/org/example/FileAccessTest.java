@@ -9,7 +9,7 @@ class FileAccessTest {
     @Test
     void getArr() {
         var filename = "test.bin";
-        var data = new ArrayList<Integer>() {{
+        ArrayList<Integer> data = new ArrayList<>() {{
             add(1);
             add(2);
             add(3);
