@@ -12,7 +12,7 @@ import java.time.LocalDate;
 import java.util.Objects;
 @JsonSerialize(using = PersonSerializer.class)
 @JsonDeserialize(using = PersonDeserializer.class)
-public class Person{
+public class Person implements Serializable{
     private String firstName;
     private String lastName;
     private String patronymic;

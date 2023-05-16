@@ -9,7 +9,7 @@ import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CompareJSONTest {
+class CompareJsonTest {
 
     @Test
     void compareJSON() {

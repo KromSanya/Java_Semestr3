@@ -2,19 +2,12 @@ package org.example;
 
 import org.junit.jupiter.api.Test;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Reader;
+
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+
 import java.time.Month;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 
-import static org.example.ExportCSV.exportSCV;
-import static org.junit.jupiter.api.Assertions.*;
 
 class HouseTest {
 

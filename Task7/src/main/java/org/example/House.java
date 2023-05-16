@@ -14,7 +14,6 @@ import java.util.stream.IntStream;
 @JsonSerialize(using = HouseSerializer.class)
 @JsonDeserialize(using = HouseDeserializer.class)
 public class House implements Serializable {
-    private static final String CSV_SEPARATOR = ";";
     private String houseNumber;
     private String address;
     private Person mainPerson;
@@ -36,8 +35,8 @@ public class House implements Serializable {
     public void exportCSV()
     {
         String filename = "house_" + houseNumber + ".csv";
+        String CSV_SEPARATOR = ";";
         try {
-            //Writer writer = new FileWriter(filename, StandardCharSets.UTF_8);
             BufferedWriter bw = new BufferedWriter(new FileWriter(filename, StandardCharsets.UTF_8));
             StringBuilder oneLine = new StringBuilder();
             oneLine.append("Кадастровый номер: ").append(CSV_SEPARATOR).append(houseNumber).append(CSV_SEPARATOR).append("\r\n");
@@ -95,25 +94,6 @@ public class House implements Serializable {
 
     public void setFlatList(List<Flat> flatList) {
         this.flatList = flatList;
-    }
-
-
-
-    public void serialize(String filename) {
-        String fullname = mainPerson.getLastName() + " " + mainPerson.getFirstName() + " " + mainPerson.getPatronymic();
-        try (ObjectOutput out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(filename)))) {
-            out.writeObject(fullname);
-        } catch (IOException e) {
-            throw new RuntimeException("Ошибка сериализации");
-        }
-    }
-
-    public House deserializeHouse(String filename) {
-        try (ObjectInput in = new ObjectInputStream(new BufferedInputStream(new FileInputStream(filename)))) {
-            return (House) in.readObject();
-        } catch (IOException | ClassNotFoundException e) {
-            throw new RuntimeException("Ошибка десериализации");
-        }
     }
 
     @Override
