@@ -1,26 +1,34 @@
 package org.example;
 
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class SecondTask {
-    public static void writeCharsInFileWithSpaces(List<Character> characterList, String filename) {
+    public static void writeCharsInFileWithSpaces(int[] a, String filename) {
         try (FileWriter writer = new FileWriter(filename)) {
-            for (Character c : characterList) writer.write(c);
+            for (int i = 0; i < a.length; i++)
+                writer.write(a[i] + " ");
         } catch (IOException e) {
             throw new RuntimeException("Ошибка записи в файл");
         }
     }
 
-    public static ArrayList<Character> readCharsFromFile(String filename) {
-        try (FileReader reader = new FileReader(filename)) {
-            ArrayList<Character> listChar = new ArrayList<>();
-            while (reader.ready()) listChar.add((char) reader.read());
-
-            return listChar;
+    public static int[] readCharsFromFile(String filename, int[] a) {
+        try (Scanner scan = new Scanner(new FileInputStream(filename))) {
+//            DataInputStream dis = new DataInputStream(new FileInputStream(filename));
+//            for(int i = 0; i < a.length; i++)
+//                a[i] = dis.readInt();
+            int i = 0;
+            while (scan.hasNext() || i < a.length) {
+                a[i] = scan.nextInt();
+                i++;
+            }
+            return a;
         } catch (IOException e) {
             throw new RuntimeException("Ошибка чтения из файла");
         }

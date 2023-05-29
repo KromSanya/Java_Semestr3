@@ -10,18 +10,15 @@ public class FileAccess {
     public static ArrayList<Integer> getArr(String path, int poz) {
 
         ArrayList<Integer> arr = new ArrayList<>();
-        RandomAccessFile rand;
-            try {
-                rand = new RandomAccessFile(path, "r");
-                rand.seek(4 + poz * 4L);
-                while (rand.getFilePointer() < rand.length())
-                {
-                    arr.add(rand.readInt());
-                }
-                return arr;
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+        try (RandomAccessFile rand = new RandomAccessFile(path, "r")) {
+            rand.seek(4 + poz * 4L);
+            while (rand.getFilePointer() < rand.length()) {
+                arr.add(rand.readInt());
             }
+            return arr;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
 
     }

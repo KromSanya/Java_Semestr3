@@ -16,11 +16,10 @@ public class NameFilter {
 
 
     public static List<String> fileNameFilter(String dir, Pattern name) {
-        List<String> files = new ArrayList<>();
         MyFileVisitor myFileVisitor = new MyFileVisitor(name);
         try {
             Files.walkFileTree(Paths.get(dir), myFileVisitor);
-            files = myFileVisitor.getFiles();
+            List<String> files = myFileVisitor.getFiles();
             //System.out.println(files);
             return files;
         } catch (IOException e) {

@@ -2,6 +2,7 @@ package org.example;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
@@ -59,6 +60,22 @@ public class House implements Serializable {
             bw.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    public static House deserialize(String json) {
+        try {
+            return new ObjectMapper().readValue(json, House.class);
+        } catch (IOException e) {
+            throw new RuntimeException("Ошибка десериализации");
+        }
+    }
+
+    public static String serialize(House house) {
+        try {
+            return new ObjectMapper().writeValueAsString(house);
+        } catch (IOException e) {
+            throw new RuntimeException("Ошибка сериализации");
         }
     }
 
