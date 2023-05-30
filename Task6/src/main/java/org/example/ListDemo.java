@@ -19,10 +19,6 @@ public class ListDemo {
         return res;
     }
 
-
-
-
-
     public static <T extends Human> Set<T> getSetHumanWhoIdContainsInIntSet(Map<Integer, T> dataSet, Set<Integer> intSet) {
         return dataSet.keySet().stream().filter(intSet::contains).map(dataSet::get).collect(Collectors.toSet());
     }
