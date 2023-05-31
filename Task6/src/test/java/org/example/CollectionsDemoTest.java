@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -12,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class CollectionsDemoTest {
     @Test
     void getCountStringsStartsWithChar() {
-        var data = new ArrayList<String>() {{
+        ArrayList<String> data = new ArrayList<>() {{
             add("aaa");
             add("aab");
             add("bab");
@@ -26,11 +27,11 @@ class CollectionsDemoTest {
 
     @Test
     void getListPeopleWhoLastNameEqualsWithPerson() {
-        var human1 = new Human("name", "surname", "ppp", 10);
-        var human2 = new Human("name", "surname2", "ppp", 10);
-        var human3 = new Human("name", "surname3", "ppp", 10);
+        Human human1 = new Human("name", "surname", "ppp", 10);
+        Human human2 = new Human("name", "surname2", "ppp", 10);
+        Human human3 = new Human("name", "surname3", "ppp", 10);
 
-        var data = new ArrayList<Human>() {{
+        ArrayList<Human> data = new ArrayList<>() {{
             add(new Human("name", "surname", "ppp", 10));
             add(new Human("name", "surname", "ppp", 10));
             add(new Human("name", "surname", "ppp", 10));
@@ -44,23 +45,27 @@ class CollectionsDemoTest {
 
     @Test
     void getListPeopleWithOutPerson() {
-        var human = new Human("name", "surname", "ppp", 10);
+        Human human = new Human("name", "surname", "ppp", 10);
 
-        var data = new ArrayList<Human>() {{
+        ArrayList<Human> data = new ArrayList<>() {{
             add(new Human("name", "surname", "ppp", 10));
             add(new Human("name", "surname2", "ppp", 10));
         }};
 
-        var dataWithoutHuman = new ArrayList<Human>() {{
+        ArrayList<Human> dataWithoutHuman = new ArrayList<>() {{
             add(new Human("name", "surname2", "ppp", 10));
         }};
 
-        Assertions.assertEquals(dataWithoutHuman, CollectionsDemo.getListPeopleWithOutPerson(data, human));
+        var res = CollectionsDemo.getListPeopleWithOutPerson(data, human);
+        Assertions.assertEquals(dataWithoutHuman, res);
+
+        data.get(1).setAge(333);
+        Assertions.assertEquals(dataWithoutHuman, res);
     }
 
     @Test
     void getSetList() {
-        var setList = new ArrayList<Set<Integer>>() {{
+        ArrayList<Set<Integer>> setList = new ArrayList<>() {{
             add(new HashSet<>() {{
                 add(1);
                 add(2);
@@ -76,11 +81,11 @@ class CollectionsDemoTest {
             }});
         }};
 
-        var set = new HashSet<Integer>() {{
+        HashSet<Integer> set = new HashSet<>() {{
             add(3);
         }};
 
-        var res = CollectionsDemo.getSetList(setList, set);
+        List<Set<Integer>> res = CollectionsDemo.getSetList(setList, set);
 
         Assertions.assertEquals(2, res.size());
         Assertions.assertEquals(3, res.get(0).size());
@@ -89,21 +94,21 @@ class CollectionsDemoTest {
 
     @Test
     void getIntersection() {
-        var set1 = new HashSet<Integer>() {{
+        HashSet<Integer> set1 = new HashSet<>() {{
             add(1);
             add(2);
             add(3);
             add(4);
         }};
 
-        var set2 = new HashSet<Integer>() {{
+        HashSet<Integer> set2 = new HashSet<>() {{
             add(5);
             add(6);
             add(3);
             add(4);
         }};
 
-        var intersection = new HashSet<Integer>() {{
+        HashSet<Integer> intersection = new HashSet<>() {{
             add(3);
             add(4);
         }};

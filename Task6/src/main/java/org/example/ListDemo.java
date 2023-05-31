@@ -4,18 +4,22 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class ListDemo {
+
+    //Task5
     public static <T extends Human> Set<T> getMaxAgeHumans(List<T> humans) {
-        var res = new HashSet<T>();
-        var maxAge = -1;
+        HashSet<T> res = new HashSet<>();
+        int maxAge = -1;
 
         for (T human : humans) {
             if (human.getAge() > maxAge) {
                 maxAge = human.getAge();
-                res.clear();
             }
-            if (human.getAge() == maxAge) res.add(human);
         }
-
+        for (T human : humans) {
+            if (human.getAge() == maxAge) {
+                res.add(human);
+            }
+        }
         return res;
     }
 
@@ -24,32 +28,33 @@ public class ListDemo {
     }
 
     public static <T extends Human> List<Integer> getListIdPeopleWhoAgeLess18(Map<Integer, T> dataSet) {
-        var result = new ArrayList<Integer>();
+        ArrayList<Integer> result = new ArrayList<>();
 
-        for (Integer integer : dataSet.keySet())
-            if (dataSet.get(integer).getAge() <= 18) result.add(integer);
+        for (Integer integer : dataSet.keySet()) {
+            if (dataSet.get(integer).getAge() <= 18) {
+                result.add(integer);
+            }
+        }
 
         return result;
     }
 
     public static <T extends Human> Map<Integer, Integer> getMapFromIdToAge(Map<Integer, T> dataSet) {
-        var result = new HashMap<Integer, Integer>();
+        HashMap<Integer, Integer> result = new HashMap<>();
 
-        for (Integer integer : dataSet.keySet())
+        for (Integer integer : dataSet.keySet()) {
             result.put(integer, dataSet.get(integer).getAge());
+        }
 
         return result;
     }
 
     public static <T extends Human> Map<Integer, ArrayList<T>> getMapFromAgeToListHuman(Set<T> dataSet) {
-        var hashMap = new HashMap<Integer, ArrayList<T>>();
+        HashMap<Integer, ArrayList<T>> hashMap = new HashMap<>();
 
         for (T human : dataSet) {
             if (hashMap.containsKey(human.getAge())) hashMap.get(human.getAge()).add(human);
-            else hashMap.put(human.getAge(),
-                    new ArrayList<>() {{
-                        add(human);
-                    }});
+            else hashMap.put(human.getAge(), new ArrayList<>(List.of(human)));
         }
 
         return hashMap;

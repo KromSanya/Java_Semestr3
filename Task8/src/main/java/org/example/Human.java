@@ -2,10 +2,11 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Objects;
 
-public class Human {
+public class Human implements Executable {
 
 
     private String name;
@@ -87,4 +88,9 @@ public class Human {
     }
 
     private void func(){}
+
+    @Override
+    public int execute() {
+        return (int) Arrays.stream(this.getClass().getMethods()).count();
+    }
 }

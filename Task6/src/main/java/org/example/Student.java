@@ -7,7 +7,7 @@ public class Student extends Human {
 
     public Student(String name, String lastName, String patronymic, int age, String facultyName) {
         super(name, lastName, patronymic, age);
-        setFacultyName(facultyName);
+        this.facultyName = facultyName;
     }
 
     public String getFacultyName() {

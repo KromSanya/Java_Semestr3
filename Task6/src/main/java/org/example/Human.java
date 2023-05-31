@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Objects;
 
-public class Human implements Iterable<Human> {
+public class Human {
 
     //По множеству объектов, расширяющих Human, постройте список так, чтобы итератор
     //списка перебирал его элементы по возрастанию ФИО людей без дополнительной
@@ -89,8 +89,8 @@ public class Human implements Iterable<Human> {
     }
 
 
-    @Override
-    public Iterator<Human> iterator() {
-        return new HumanIterator(this);
-    }
+//    @Override
+//    public Iterator<Human> iterator() {
+//        return new HumanIterator(this);
+//    }
 }

@@ -8,7 +8,7 @@ import java.util.Set;
 public class CollectionsDemo {
 
     public static int getCountStringsStartsWithChar(List<String> dataSet, Character start) {
-       // return (int) dataSet.stream().filter(n -> n.startsWith(String.valueOf(start))).count();
+        //Task1
         int i = 0;
         for(int j = 0; j < dataSet.size();j++)
         {
@@ -21,7 +21,7 @@ public class CollectionsDemo {
     }
 
     public static List<Human> getListPeopleWhoLastNameEqualsWithPerson(List<Human> dataSet, Human person) {
-        //return dataSet.stream().filter(n -> n.getLastName().equals(person.getLastName())).toList();
+        //Task2
         ArrayList<Human> list = new ArrayList<>();
         for(int j = 0; j < dataSet.size();j++)
         {
@@ -33,25 +33,26 @@ public class CollectionsDemo {
         return  list;
     }
 
+
     public static List<Human> getListPeopleWithOutPerson(List<Human> dataSet, Human person) {
-       // return dataSet.stream().filter(n -> !n.equals(person)).toList();
+        //Task3
         ArrayList<Human> list = new ArrayList<>();
-        for(int j = 0; j < dataSet.size();j++)
-        {
-            if(!dataSet.get(j).equals(person))
-            {
-                list.add(dataSet.get(j));
+        for (Human human : dataSet) {
+            if (!human.equals(person)) {
+                var temp = new Human(human.getName(), human.getLastName(), human.getPatronymic(), human.getAge());
+                list.add(temp);
             }
         }
         return  list;
     }
 
+    //Task4
     public static List<Set<Integer>> getSetList(List<Set<Integer>> listSet, Set<Integer> set) {
         return listSet.stream().filter(n -> !getIntersection(n, set).isEmpty()).toList();
     }
 
     public static Set<Integer> getIntersection(Set<Integer> set1, Set<Integer> set2) {
-        var temp = new HashSet<>(set1);
+        HashSet<Integer> temp = new HashSet<>(set1);
         temp.retainAll(set2);
         return temp;
     }
