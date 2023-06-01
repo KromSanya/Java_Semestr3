@@ -90,7 +90,7 @@ public class Human implements Executable {
     private void func(){}
 
     @Override
-    public int execute() {
-        return (int) Arrays.stream(this.getClass().getMethods()).count();
+    public void execute() {
+        //return (int) Arrays.stream(this.getClass().getMethods()).count();
     }
 }

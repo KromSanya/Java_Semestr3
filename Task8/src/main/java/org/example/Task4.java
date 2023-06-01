@@ -12,15 +12,11 @@ public class Task4 {
 
         for(T t: list)
         {
-            try {
-                Method methods = t.getClass().getMethod("execute");
-                if ( methods.getName().equals("execute")) {
-
-                }
-            } catch (NoSuchMethodException e) {
-                throw new RuntimeException(e);
+            if(t instanceof Executable)
+            {
+               count++;
+                       //((Executable) t).execute();
             }
-
 
         }
         return count;

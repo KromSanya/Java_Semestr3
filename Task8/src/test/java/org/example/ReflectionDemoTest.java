@@ -29,9 +29,10 @@ class ReflectionDemoTest {
     }
 
     @Test
-    void getMethodNames() {
-        Assertions.assertEquals(20, ReflectionDemo.getOpenMethods(new Human("", "", "", 0)).size());
-        Assertions.assertEquals(22, ReflectionDemo.getOpenMethods(new Student("", "", "", 1, "")).size());
+    void getOpenMethods() {
+        Assertions.assertEquals(15, ReflectionDemo.getOpenMethods(new Human("", "", "", 0)).size());
+        //System.out.println(ReflectionDemo.getOpenMethods(new Human("", "", "", 0)));
+        Assertions.assertEquals(4, ReflectionDemo.getOpenMethods(new Student("", "", "", 1, "")).size());
 //        Assertions.assertEquals(90, ReflectionDemo.getOpenMethods("").size());
 //        Assertions.assertEquals(61, ReflectionDemo.getOpenMethods(1).size());
     }

@@ -21,7 +21,16 @@ public class ReflectionDemo {
 
     public static <T> List<Method> getOpenMethods(T obj)
     {
-        return Arrays.stream(obj.getClass().getMethods()).toList();
+        var temp = obj.getClass().getDeclaredMethods();
+//        int mods = obj.getClass().getModifiers();
+//        var list = new ArrayList<Method>();
+//        for(int i = 0; i < temp.length;i++)
+//        {
+//            if(temp[i].getModifiers() == Modifier.PUBLIC)
+//                list.add(temp[i]);
+//        }
+//       // return list;
+        return Arrays.stream(temp).filter(val -> val.getModifiers() == Modifier.PUBLIC).toList();
     }
 
     public static <T> List<String> getNameSuperClasses(T obj)
