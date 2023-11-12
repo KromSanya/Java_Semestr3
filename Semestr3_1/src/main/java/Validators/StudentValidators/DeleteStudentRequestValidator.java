@@ -1,8 +1,9 @@
 package Validators.StudentValidators;
 
+import Requests.Students.DeleteStudentRequest;
 import Validate.IRequestValidator;
 import Validate.ValidateID;
-import requests.Studentsrequests.DeleteStudentRequest;
+
 
 import java.util.List;
 
